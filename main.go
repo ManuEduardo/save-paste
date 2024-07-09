@@ -1,13 +1,23 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/ManuEduardo/save-paste/src/handlers"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal(".env file could not be loaded")
+	}
+
+	portServer := os.Getenv("PORT")
+
 	// cfg := mysql.Config{
 	// 	User:                 store.Envs.DBUser,
 	// 	Passwd:               store.Envs.DBPassword,
@@ -40,8 +50,8 @@ func main() {
 	// router.HandleFunc("/cars/{id}", handler.HandleDeleteCar)
 	// router.HandleFunc("/cars/search", handler.HandleSearchCar)
 
-	log.Printf("Listening on %v\n", "localhost:8080")
-	err := http.ListenAndServe(":8080", router)
+	log.Printf("Listening on %v\n", fmt.Sprintf("localhost:%v", portServer))
+	err = http.ListenAndServe(fmt.Sprintf(":%v", portServer), router)
 	log.Fatalln(err.Error())
 }
 

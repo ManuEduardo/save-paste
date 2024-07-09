@@ -1,13 +1,13 @@
 package handlers
 
 import (
-	"html/template"
 	"log"
 	"net/http"
+
+	"github.com/ManuEduardo/save-paste/src/views"
 )
 
 func HandleLogin(w http.ResponseWriter, r *http.Request) {
-	template := template.Must(template.ParseFiles("../views/login.html"))
 	log.Println("Using Base Handler")
-	template.Execute(w, nil)
+	views.Login("xd").Render(r.Context(), w)
 }
