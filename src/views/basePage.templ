@@ -1,6 +1,8 @@
 package views
 
-templ BasePage(nav bool) {
+import "github.com/ManuEduardo/save-paste/src/views/layouts"
+
+templ BasePage() {
 	
     <!DOCTYPE html>
     <html lang="en">
@@ -13,17 +15,28 @@ templ BasePage(nav bool) {
         <link rel="stylesheet" href="/public/styles.css">
         <title>SavePaste</title>
     </head>
-    <body>
-        <div class="p-3 bg-emerald-600">
-            <h1 class=" text-center text-3xl text-gray-800">Test wrapper</h1>
-            if nav {
-                <a href="/" class=" text-center my-2 text-lg font-semibold">home</a>
+    <body class=" min-h-screen">
+        @layouts.BaseLayout(false){
+            { children...}
+        }
+        <script>
+            // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
             } else {
-                <a href="/login" class=" text-center my-2 text-lg font-semibold">login</a>
+                document.documentElement.classList.remove('dark')
             }
-        </div>
-        { children...}
-        <p></p>
+            const initTheme = () => {
+                if (localStorage.getItem('color-theme') === 'dark' || 
+                    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    themeToggleSwicher.checked = true;
+                } else {
+                    themeToggleSwicher.checked = false;
+                }
+            };
+
+            initTheme();
+        </script>
     </body>
     </html>
 }

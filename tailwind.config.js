@@ -5,3 +5,4 @@ export const theme = {
 };
 export const plugins = [];
 
+export const darkMode = ["class"]
