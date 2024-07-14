@@ -16,5 +16,5 @@ func New() *Handler {
 
 func HandleBase(w http.ResponseWriter, r *http.Request) {
 	log.Println("Using Base Handler")
-	views.BasePage().Render(r.Context(), w)
+	views.BasePage(false).Render(r.Context(), w)
 }

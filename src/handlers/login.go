@@ -9,5 +9,5 @@ import (
 
 func HandleLogin(w http.ResponseWriter, r *http.Request) {
 	log.Println("Using Base Handler")
-	views.Login("xd").Render(r.Context(), w)
+	views.Login("Manu").Render(r.Context(), w)
 }
