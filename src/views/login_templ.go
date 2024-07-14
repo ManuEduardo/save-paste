@@ -38,20 +38,7 @@ func Login(name string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\" flex bg-gradient-to-r from-zinc-50 to-stone-100 dark:bg-gradient-to-r dark:from-sky-800 dark:to-blue-900\"><div class=\" min-h-full\"><p class=\" text-2xl text-center text-blue-600\">Login prueba</p><button class=\" bg-orange-600 block mx-auto\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			var templ_7745c5c3_Var3 string
-			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(name)
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `src/views/login.templ`, Line: 8, Col: 60}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button></div><div class=\" min-h-full\"><p>imagen epica unu</p></div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"min-h-full grow p-2 flex flex-col-reverse justify-center bg-gradient-to-r from-zinc-50 to-stone-100 dark:bg-gradient-to-r dark:from-sky-800 dark:to-blue-900\"><form class=\" min-h-full p-3 rounded-b-lg bg-gradient-to-r from-orange-400 to-orange-600  dark:from-cyan-700 dark:to-cyan-800\"><h2 class=\" text-5xl font-semibold text-zinc-800 dark:text-zinc-100\">Holla, </h2><h2 class=\" text-6xl font-bold text-zinc-800 dark:text-zinc-100 mb-4\">welcome back!</h2><div><label for=\"first_name\" class=\"block mb-2 text-sm font-medium text-gray-900 dark:text-white\">User</label> <input type=\"text\" id=\"first_name\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500\" placeholder=\"John\" required></div><div class=\"mb-6\"><label for=\"password\" class=\"block mb-2 text-sm font-medium text-gray-900 dark:text-white\">Password</label> <input type=\"password\" id=\"password\" class=\"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500\" placeholder=\"•••••••••\" required></div><div class=\" w-min h-min ml-auto mr-6 \"><button class=\"ml-auto mr-0  relative inline-flex items-center justify-center p-0.5 overflow-hidden text-base font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800\"><span class=\"relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0\">Login</span></button></div></form><div class=\" min-h-full h-64 overflow-hidden\"><img src=\"/public/img/kid-cut.jpg\" alt=\"kig cutting images\" class=\"h-auto object-cover object-top transition-all duration-300 rounded-t-lg blur-sm hover:blur-none\" srcset=\"\"></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
