@@ -1,0 +1,11 @@
+package components
+
+type TagItemProps struct {
+    TitleFilter string
+}
+
+templ TagItem(dataProps TagItemProps) {
+    <p class=" text-xs bg-red-100 rounded-lg p-1 mt-1">
+        {dataProps.TitleFilter}
+    </p>
+}
