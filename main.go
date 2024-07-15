@@ -44,7 +44,8 @@ func main() {
 	router.Handle("GET /public/", http.StripPrefix("/public/", fileServer))
 
 	router.HandleFunc("GET /login", handlers.HandleLogin)
-	router.HandleFunc("GET /", handlers.HandleBase)
+	router.HandleFunc("GET /register", handlers.HandleRegister)
+	router.HandleFunc("GET /", handlers.HandleHome)
 	// router.HandleFunc("/cars", handler.HandleListCars)
 	// router.HandleFunc("/cars", handler.HandleAddCar)
 	// router.HandleFunc("/cars/{id}", handler.HandleDeleteCar)

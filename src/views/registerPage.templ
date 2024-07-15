@@ -1,19 +1,25 @@
 package views
 
-templ Login(name string) {
+templ Register() {
 @BasePage() {
 <div
-	class="min-h-full grow p-2 flex flex-col-reverse lg:grid lg:grid-cols-10 justify-center bg-gradient-to-r from-zinc-50 to-stone-100 dark:bg-gradient-to-r dark:from-sky-800 dark:to-blue-900">
+	class="min-h-full grow p-2 flex flex-col lg:grid lg:grid-cols-10 justify-center bg-gradient-to-r from-zinc-50 to-stone-100 dark:bg-gradient-to-r dark:from-sky-800 dark:to-blue-900">
+	<div class=" min-h-full lg:col-span-4  overflow-hidden">
+		<img src="/public/img/kid-with-dog.jpg" alt="kid cropping images"
+			class="object-cover w-full h-48 sm:h-72 lg:h-full transition-all duration-300 rounded-t-lg lg:rounded-r-lg lg:rounded-l-none blur-sm hover:blur-none" srcset="">
+	</div>
 	<div
-		class="flex flex-col justify-center lg:col-span-4 p-3 rounded-b-lg lg:rounded-r-none lg:rounded-l-lg bg-gradient-to-r from-orange-400 to-orange-600  dark:from-cyan-900 dark:to-cyan-950">
-		<form class="block max-h-min max-w-80 lg:my-auto mx-auto">
-			<h2 class=" text-5xl font-semibold text-zinc-800 dark:text-zinc-100">Holla, </h2>
+		class="flex flex-col justify-center lg:col-span-6 p-3 rounded-b-lg lg:rounded-l-none lg:rounded-r-lg bg-gradient-to-r from-orange-400 to-orange-600  dark:from-cyan-900 dark:to-cyan-950">
+		<form class="block max-h-min lg:my-auto mx-auto">
 			<h2 class=" text-6xl font-bold text-zinc-800 dark:text-zinc-100 mb-4">
-				welcome back!
+				Let's start!
 			</h2>
-			<div class="my-6">
+			<p class=" w-3/4 mr-0 ml-auto text-1xl text-right font-normal text-zinc-800 dark:text-zinc-100 mb-4">
+				Save, manage and paste what you need!
+			</p>
+			<div class="mb-3 mt-6">
 				<label for="website-admin" class="block mb-2 text-sm pl-2 font-medium text-gray-900 dark:text-white">
-					Enter your user</label>
+					Enter the username</label>
 				<div class="flex">
 					<span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
 					<svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -23,7 +29,20 @@ templ Login(name string) {
 					<input type="text" id="website-admin" class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-blue-950 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bonnie Green">
 				</div>
 			</div>
-			<div class="my-6">
+			<div class="mb-3">
+				<label for="email-address-icon" class="block mb-2 text-sm pl-2 font-medium text-gray-900 dark:text-white">
+					Enter your Email</label>
+				<div class="relative">
+					<div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+					<svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+						<path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"/>
+						<path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"/>
+					</svg>
+					</div>
+					<input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-blue-950 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com">
+				</div>
+			</div>
+			<div class="mb-3">
 				<label for="password" class="block mb-2 text-sm pl-2 font-medium text-gray-900 dark:text-white">
 					Enter your Password</label>
 					<div class=" flex">
@@ -42,21 +61,21 @@ templ Login(name string) {
 						</div>
 					</div>
 			</div>
+			<div class="flex items-center mb-4">
+				<input checked id="checkbox-1" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" >
+				<label for="checkbox-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree to the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
+			</div>
 
-			<div class=" w-min h-min mx-auto">
+			<div class=" w-min h-min ml-auto">
 				<button
 					class="ml-auto mr-0  relative inline-flex items-center justify-center p-0.5 overflow-hidden text-base font-semibold text-gray-900 rounded-lg group bg-gradient-to-br from-pink-600 to-orange-500 group-hover:from-pink-600 group-hover:to-orange-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-900">
 					<span
 						class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gradient-to-r from-orange-400 to-amber-500 dark:from-orange-500 dark:to-orange-700 bg-white rounded-md group-hover:bg-opacity-0">
-						Login
+						Register
 					</span>
 				</button>
 			</div>
 		</form>
-	</div>
-	<div class=" min-h-full lg:col-span-6 overflow-hidden">
-		<img src="/public/img/kid-cut.jpg" alt="kid cropping images"
-			class="object-cover w-full h-48 sm:h-72 lg:h-full transition-all duration-300 rounded-t-lg lg:rounded-r-lg lg:rounded-l-none blur-sm hover:blur-none" srcset="">
 	</div>
 	<script>
 		let inputPassword = document.getElementById("input-password");

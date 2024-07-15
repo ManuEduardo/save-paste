@@ -8,6 +8,6 @@ import (
 )
 
 func HandleLogin(w http.ResponseWriter, r *http.Request) {
-	log.Println("Using Base Handler")
+	log.Println("Using Login Handler")
 	views.Login("Manu").Render(r.Context(), w)
 }
