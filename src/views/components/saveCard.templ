@@ -1,11 +1,17 @@
 package components
 
-// type SaveCardProps struct {
-//     TitleFilter string
-// }
+type SaveCardProps struct {
+    Title string
+    Content string
+    Tags []TagItemProps
+    DateCreated string
+    IsVisible bool
+}
 
-templ SaveCard() {
-    <div>
-        carta xd
+templ SaveCard(dataProps SaveCardProps) {
+    <div class=" p-1 m-1 bg-yellow-200 rounded-lg">
+        <p>{dataProps.Title}</p>
+        <p>{dataProps.Content}</p>
+        <p>{dataProps.DateCreated}</p>
     </div>
 }

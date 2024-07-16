@@ -1,11 +1,13 @@
 package components
 
 type TagItemProps struct {
-    TitleFilter string
+TitleFilter string
+IsAdded bool
 }
 
-templ TagItem(dataProps TagItemProps) {
-    <p class=" text-xs bg-red-100 rounded-lg p-1 mt-1">
-        {dataProps.TitleFilter}
-    </p>
+templ TagItem(dataProps TagItemProps, order string) {
+<l1 id={order}
+    class="item-tag text-xs dark:bg-gray-800 font-normal border border-solid border-gray-300 dark:border-gray-800 bg-gray-200 rounded-lg pt-1 pb-1.5 px-2 mt-1 shadow-sm hover:shadow-md hover:scale-105 transform transition">
+    {dataProps.TitleFilter}
+</l1>
 }

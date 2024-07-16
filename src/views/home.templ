@@ -2,47 +2,79 @@ package views
 
 import "github.com/ManuEduardo/save-paste/src/views/layouts"
 import "github.com/ManuEduardo/save-paste/src/views/components"
+import "strconv"
+import "fmt"
 
 type HomeProps struct {
-    Items []components.TagItemProps
+    TagsItems []components.TagItemProps
+    SavesCards []components.SaveCardProps
 }
 
 templ Home(dataProps HomeProps) {
     @BasePage(){
         @layouts.MenuLayout() {
-        <div class="min-h-full grow p-2 m-2 rounded-lg bg-gradient-to-r from-zinc-50 to-stone-100 dark:bg-gradient-to-r dark:from-sky-800 dark:to-blue-900 drop-shadow">
-            <h2 class=" text-4xl font-semibold text-zinc-800 dark:text-zinc-100 mb-4">
-                Search your save
-            </h2>
-            <p class=" font-normal text-zinc-800 dark:text-zinc-100 mb-4">
-                Title, content and more...
-            </p>
-                        
-            <form class="flex items-center max-w-lg mx-auto">   
-                <label for="voice-search" class="sr-only">Search</label>
-                <div class="relative w-full">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-6 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" aria-hidden="tru" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg>
-                    </div>
-                    <input type="text" id="voice-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-12 p-2.5  dark:bg-blue-950 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow" placeholder="Title, content and more..." required />
+            <div class=" min-h-full grow p-2">
+                <div class="p-2 mb-2 rounded-lg bg-gradient-to-r from-zinc-100 to-stone-200 dark:bg-gradient-to-r dark:from-sky-800 dark:to-blue-900 drop-shadow">
+                    <h2 class=" text-4xl text-center font-semibold text-zinc-800 dark:text-zinc-100 my-4">
+                        Search your save
+                    </h2>
+                    <p class=" font-normal text-center text-zinc-800 dark:text-zinc-100 mb-4">
+                        Search for title, content or tags.
+                    </p>
+                                
+                    <form class="flex items-center max-w-lg mx-auto">   
+                        <label for="voice-search" class="sr-only">Search</label>
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-6 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" aria-hidden="tru" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="text" id="voice-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-12 p-2.5  dark:bg-blue-950 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow" 
+                            placeholder="Search" required />
+                        </div>
+                        <button class="inline-flex items-center py-2.5 pl-3 pr-4 ms-2 text-sm font-medium text-zinc-800 hover:text-white dark:text-white bg-gray-50 rounded-lg border dark:border-gray-600 hover:bg-blue-950 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-950 dark:hover:bg-blue-900 dark:focus:ring-blue-950 shadow">
+                            <svg class="w-4 h-4 mr-1 text-gray-800 group-hover:text-white hover:text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
+                            </svg>date
+                        </button>
+                    </form>
+                    <ul class=" flex gap-2 px-1 py-2 flex-wrap max-w-md mx-auto">
+        
+                        <a class=" text-xs font-light text-gray-700 dark:text-zinc-50 border border-solid border-red-400 dark:border-red-900 bg-red-300  dark:bg-red-700 dark:hover:bg-red-500 hover:bg-red-500 rounded-lg pt-1 pb-1.5 px-2 mt-1 hover:scale-105 transform transition" >
+                            No Tags Added
+                        </a>
+                        <p class=" w-max my-auto font-bold text-slate-900 dark:text-slate-400">
+                            |
+                        </p>
+                        for i, tag := range dataProps.TagsItems {
+                            @components.TagItem(tag, fmt.Sprintf("tag-%v",strconv.Itoa(i))){}
+                        }
+                    </ul>
                 </div>
-                <button class="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blue-900 rounded-lg border border-blue-700 hover:bg-blue-950 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-950 dark:hover:bg-blue-900 dark:focus:ring-blue-950">
-                    <svg class="w-4 h-4 mr-1 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
-                    </svg>date
-                </button>
-            </form>
-            <div class=" flex gap-2 p-1">
-                @components.TagItem(dataProps.Items[0]){}
-                @components.TagItem(dataProps.Items[1]){}
+
+                <div class="p-2 rounded-lg bg-gradient-to-r from-zinc-100 to-stone-200 dark:bg-gradient-to-r dark:from-sky-800 dark:to-blue-900 drop-shadow">
+                    for _, saveCard := range dataProps.SavesCards {
+                        @components.SaveCard(saveCard){}
+                    }
+                </div>
+                <script>
+                    let tagsColors = [
+                        {text:"text-orange-600", bg: "bg-orange-300", shadow: "shadow-orange-800"},
+                        {text:"text-rose-600", bg: "bg-rose-300", shadow: "shadow-rose-800"},
+                        {text:"text-violet-600", bg: "bg-violet-300", shadow: "shadow-violet-800"},
+                        {text:"text-lime-600", bg: "bg-lime-300", shadow: "shadow-lime-800"},
+                        {text:"text-yellow-600", bg: "bg-yellow-300", shadow: "shadow-yellow-800"},
+                    ]
+
+                    let tags = document.getElementsByClassName("item-tag")
+                    for (let i = 0; i < tags.length; i++) {
+                        tags[i].classList.add(`${tagsColors[i%tagsColors.length].text}`)
+                        tags[i].classList.add(`${tagsColors[i%tagsColors.length].bg}`)
+                        tags[i].classList.add(`${tagsColors[i%tagsColors.length].shadow}`)
+                    }
+                </script>
             </div>
-
-            <script>
-
-            </script>
-        </div>
         }
     }
 }
